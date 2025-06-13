@@ -1,0 +1,11 @@
+
+.metadata/
+ProgrammingElements/.settings/
+ProgrammingElements/.classpath
+ProgrammingElements/.project
+
+
+ProgrammingElements/bin/
+ProgrammingElements/**/*.class
+
+
