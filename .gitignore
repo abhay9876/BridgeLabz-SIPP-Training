@@ -7,5 +7,5 @@ ProgrammingElements/.project
 
 ProgrammingElements/bin/
 ProgrammingElements/**/*.class
-
+ProgrammingElements/src/module-info.java
 
