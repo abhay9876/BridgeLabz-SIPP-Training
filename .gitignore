@@ -9,3 +9,9 @@ ProgrammingElements/bin/
 ProgrammingElements/**/*.class
 ProgrammingElements/src/module-info.java
 
+
+ControlFlows/.settings/
+ControlFlows/.classpath
+ControlFlows/.project
+ControlFlows/bin/
+ControlFlows/**/*.class
