@@ -15,3 +15,10 @@ ControlFlows/.classpath
 ControlFlows/.project
 ControlFlows/bin/
 ControlFlows/**/*.class
+
+
+Arrays/.settings/
+Arrays/.classpath
+Arrays/.project
+Arrays/bin/
+Arrays/**/*.class
