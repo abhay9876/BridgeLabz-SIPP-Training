@@ -22,3 +22,9 @@ Arrays/.classpath
 Arrays/.project
 Arrays/bin/
 Arrays/**/*.class
+
+Methods/.settings/
+Methods/.classpath
+Methods/.project
+Methods/bin/
+Methods/**/*.class
