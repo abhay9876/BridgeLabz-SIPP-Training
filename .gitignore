@@ -28,3 +28,9 @@ Methods/.classpath
 Methods/.project
 Methods/bin/
 Methods/**/*.class
+
+Strings/.settings/
+Strings/.classpath
+Strings/.project
+Strings/bin/
+Strings/**/*.class
