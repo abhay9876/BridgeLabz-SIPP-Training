@@ -34,3 +34,9 @@ Strings/.classpath
 Strings/.project
 Strings/bin/
 Strings/**/*.class
+
+BuiltInFunctions/.settings/
+BuiltInFunctions/.classpath
+BuiltInFunctions/.project
+BuiltInFunctions/bin/
+BuiltInFunctions/**/*.class
