@@ -40,3 +40,9 @@ BuiltInFunctions/.classpath
 BuiltInFunctions/.project
 BuiltInFunctions/bin/
 BuiltInFunctions/**/*.class
+
+StringExtras/.settings/
+StringExtras/.classpath
+StringExtras/.project
+StringExtras/bin/
+StringExtras/**/*.class
