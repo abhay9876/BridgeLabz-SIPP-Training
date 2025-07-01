@@ -1,0 +1,8 @@
+.metadata/
+Reviews Task/.settings/
+Reviews Task/.classpath
+Reviews Task/.project
+
+
+Reviews Task/bin/
+Reviews Task/**/*.class
