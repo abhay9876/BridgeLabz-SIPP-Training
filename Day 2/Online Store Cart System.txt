@@ -1,0 +1,19 @@
+CLASS Item
+    ATTRIBUTES: name, price
+    CONSTRUCTOR(name, price)
+
+LIST<Item> cart
+
+FUNCTION addToCart(item)
+    cart.add(item)
+
+GENERIC METHOD calculateTotalPrice(List<T extends Item>)
+    total = 0
+    FOR each item in list
+        total += item.price
+    RETURN total
+
+MAIN:
+    addToCart(Item("Book", 200))
+    addToCart(Item("Shoes", 1200))
+    print calculateTotalPrice(cart)

@@ -1,0 +1,12 @@
+ARRAY timeSlots[questionsCount]  // circular array
+SET timePerQuestion = 30 seconds
+
+FUNCTION startQuiz()
+    FOR i = 0 → questionsCount - 1
+        PRINT "Question " + (i+1)
+        countdown = timeSlots[i]
+        WHILE countdown > 0
+            IF countdown == 5 → print "Hurry up!"
+            countdown--
+        END WHILE
+    END FOR

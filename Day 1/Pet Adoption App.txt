@@ -1,0 +1,29 @@
+CLASS Pet
+    ATTRIBUTES: name, age
+    CONSTRUCTOR(name, age)
+        this.name = name
+        this.age = age
+    METHOD showDetails()
+
+CLASS Dog EXTENDS Pet
+    ATTRIBUTES: breed
+    CONSTRUCTOR(name, age, breed)
+        CALL super(name, age)
+        this.breed = breed
+    METHOD showDetails() → print all attributes
+
+CLASS Cat EXTENDS Pet
+    ATTRIBUTES: color
+    CONSTRUCTOR(name, age, color)
+        CALL super(name, age)
+        this.color = color
+
+CLASS Bird EXTENDS Pet
+    ATTRIBUTES: canFly
+    CONSTRUCTOR(name, age, canFly)
+        CALL super(name, age)
+        this.canFly = canFly
+
+MAIN:
+    create Dog, Cat, Bird objects
+    call showDetails()

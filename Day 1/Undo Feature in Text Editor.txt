@@ -1,0 +1,16 @@
+STACK undoStack
+
+FUNCTION write(text)
+    push text into undoStack
+
+FUNCTION undo()
+    IF undoStack not empty
+        return pop from undoStack
+    ELSE
+        return "Nothing to undo"
+
+MAIN:
+    write("Hello")
+    write("World")
+    undo() → removes "World"
+    undo() → removes "Hello"

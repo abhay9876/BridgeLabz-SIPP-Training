@@ -1,0 +1,22 @@
+CLASS Customer
+    ATTRIBUTES: name, type (normal/emergency)
+
+QUEUE normalQueue
+QUEUE emergencyQueue
+
+FUNCTION addCustomer(customer)
+    IF customer.type == emergency
+        enqueue emergencyQueue
+    ELSE
+        enqueue normalQueue
+
+FUNCTION serveCustomer()
+    IF emergencyQueue not empty
+        dequeue from emergencyQueue
+    ELSE
+        dequeue from normalQueue
+
+MAIN:
+    addCustomer("Ram", normal)
+    addCustomer("Shyam", emergency)
+    serveCustomer() → Shyam served first

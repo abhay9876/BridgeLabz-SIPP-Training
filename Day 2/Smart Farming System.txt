@@ -1,0 +1,18 @@
+ABSTRACT CLASS Crop
+    ATTRIBUTES: name
+    ABSTRACT METHOD waterRequirement()
+    ABSTRACT METHOD harvest()
+
+CLASS Rice EXTENDS Crop
+    IMPLEMENT waterRequirement() → "High water needed"
+    IMPLEMENT harvest() → "Rice harvested in 120 days"
+
+CLASS Wheat EXTENDS Crop
+    IMPLEMENT waterRequirement() → "Medium water needed"
+    IMPLEMENT harvest() → "Wheat harvested in 90 days"
+
+MAIN:
+    Crop rice = new Rice()
+    Crop wheat = new Wheat()
+    print rice.waterRequirement()
+    print wheat.harvest()

@@ -1,0 +1,21 @@
+CLASS Doctor
+    ATTRIBUTES: name, specialization
+    CONSTRUCTOR(name, specialization)
+
+MAP<String, List<Doctor>> hospitalMap
+
+FUNCTION addDoctor(department, doctor)
+    IF department not in hospitalMap
+        hospitalMap[department] = new List
+    hospitalMap[department].add(doctor)
+
+FUNCTION filterBySpecialization(specialization)
+    FOR each entry in hospitalMap
+        FOR each doctor in entry.value
+            IF doctor.specialization == specialization
+                print doctor.name + " in " + entry.key
+
+MAIN:
+    addDoctor("Cardiology", Doctor("Dr. Meena", "Heart"))
+    addDoctor("Neurology", Doctor("Dr. Abhay", "Brain"))
+    filterBySpecialization("Heart")

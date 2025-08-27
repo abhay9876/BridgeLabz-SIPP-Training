@@ -1,0 +1,12 @@
+CLASS Member
+    ATTRIBUTES: name, id, membershipDate
+    CONSTRUCTOR(name, id, membershipDate)
+    METHOD isValid(currentDate)
+        IF currentDate - membershipDate <= 1 year
+            RETURN true
+        ELSE
+            RETURN false
+
+MAIN:
+    create Member("Abhay", 101, "2024-08-27")
+    call isValid("2025-08-27") → prints true/false

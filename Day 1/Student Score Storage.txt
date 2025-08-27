@@ -1,0 +1,12 @@
+MAP<String, Integer> studentMarks
+
+studentMarks.put("Abhay", 95)
+studentMarks.put("Rohan", 89)
+studentMarks.put("Meena", 99)
+
+highestScorer = studentMarks.entrySet()
+                  .stream()
+                  .max(by value)
+                  .get()
+
+PRINT highestScorer

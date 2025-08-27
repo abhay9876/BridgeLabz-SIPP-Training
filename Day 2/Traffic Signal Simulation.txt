@@ -1,0 +1,20 @@
+ENUM TrafficLight { RED, YELLOW, GREEN }
+
+CLASS SignalController
+    ATTRIBUTE: currentLight (TrafficLight)
+    CONSTRUCTOR → set default currentLight = RED
+
+    METHOD switchLight()
+        IF currentLight == RED → set YELLOW
+        ELSE IF currentLight == YELLOW → set GREEN
+        ELSE IF currentLight == GREEN → set RED
+
+    METHOD runSimulation(interval)
+        LOOP forever
+            print currentLight
+            wait interval seconds
+            switchLight()
+
+MAIN:
+    create SignalController
+    call runSimulation(5)  // switches every 5 seconds

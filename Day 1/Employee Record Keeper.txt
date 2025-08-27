@@ -1,0 +1,15 @@
+CLASS Employee
+    ATTRIBUTES: name, department
+    CONSTRUCTOR(name, department)
+
+LIST<Employee> employees
+
+employees.add(Employee("Amit", "IT"))
+employees.add(Employee("Priya", "HR"))
+employees.add(Employee("Raj", "IT"))
+
+filteredList = employees.stream()
+                .filter(emp → emp.department == "IT")
+                .collect(toList)
+
+PRINT filteredList

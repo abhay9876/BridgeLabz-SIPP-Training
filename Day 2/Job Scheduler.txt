@@ -1,0 +1,19 @@
+CLASS Job
+    ATTRIBUTES: name, deadline, processingTime
+    CONSTRUCTOR(name, deadline, processingTime)
+
+PRIORITY_QUEUE<Job> jobQueue
+    // priority: earliest deadline first, if tie → smaller processingTime first
+
+FUNCTION addJob(job)
+    enqueue jobQueue with given priority
+
+FUNCTION scheduleJobs()
+    WHILE jobQueue not empty
+        job = dequeue
+        print "Executing " + job.name
+
+MAIN:
+    addJob("Job1", deadline=3, time=4)
+    addJob("Job2", deadline=1, time=2)
+    scheduleJobs()
