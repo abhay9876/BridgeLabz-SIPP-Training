@@ -1,0 +1,121 @@
+Pseudo-code: Healthcare Diagnosis Engine (Strategy Pattern)
+BEGIN
+    DEFINE INTERFACE DiagnosisStrategy
+        METHOD diagnose(symptoms: List) RETURNS List
+
+    DEFINE CLASS RuleBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+        METHOD diagnose(symptoms: List)
+            MATCH symptoms WITH predefinedRules
+            RETURN matchingDiseases
+
+    DEFINE CLASS AIBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+        METHOD diagnose(symptoms: List)
+            LOAD trainedAIModel
+            PREDICT diseases FROM symptoms
+            RETURN predictedDiseases
+
+    DEFINE CLASS ProbabilityBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+        METHOD diagnose(symptoms: List)
+            CALCULATE probabilityScore FOR each possible disease
+            RETURN diseases WITH scores
+
+    DEFINE CLASS DiagnosisContext
+        ATTRIBUTE strategy: DiagnosisStrategy
+        METHOD setStrategy(strategy: DiagnosisStrategy)
+            SET this.strategy = strategy
+        METHOD executeDiagnosis(symptoms: List)
+            RETURN strategy.diagnose(symptoms)
+
+    DEFINE MAIN
+        CREATE context AS DiagnosisContext
+
+        SET context.strategy = RuleBasedDiagnosis
+        CALL context.executeDiagnosis(symptomsForGeneralMedicine)
+
+        SET context.strategy = AIBasedDiagnosis
+        CALL context.executeDiagnosis(symptomsForNeurology)
+
+        SET context.strategy = GeneticPatternDiagnosis (future strategy)
+        CALL context.executeDiagnosis(symptomsForGenetics)
+END
+
+
+
+***************************************************************************************************************
+
+
+
+
+
+Pseudo-code: Restaurant POS Billing System
+BEGIN
+    DEFINE INTERFACE TaxCalculator
+        METHOD calculateTax(amount)
+
+    DEFINE CLASS FoodTax IMPLEMENTS TaxCalculator
+        METHOD calculateTax(amount)
+            RETURN amount * 0.05
+
+    DEFINE CLASS BeverageTax IMPLEMENTS TaxCalculator
+        METHOD calculateTax(amount)
+            RETURN amount * 0.12
+
+    DEFINE CLASS ImportedTax IMPLEMENTS TaxCalculator
+        METHOD calculateTax(amount)
+            RETURN (amount * 0.05) + customsDuty(amount)
+
+    DEFINE CLASS LuxuryTax IMPLEMENTS TaxCalculator   // Added later without changing main code
+        METHOD calculateTax(amount)
+            RETURN amount * 0.18
+
+    DEFINE INTERFACE DiscountPolicy
+        METHOD applyDiscount(amount)
+
+    DEFINE CLASS NoDiscount IMPLEMENTS DiscountPolicy
+        METHOD applyDiscount(amount)
+            RETURN amount
+
+    DEFINE CLASS FlatDiscount IMPLEMENTS DiscountPolicy
+        METHOD applyDiscount(amount)
+            RETURN amount - 100
+
+    DEFINE CLASS PercentageDiscount IMPLEMENTS DiscountPolicy
+        METHOD applyDiscount(amount)
+            RETURN amount * 0.90
+
+    DEFINE CLASS BuyOneGetOne IMPLEMENTS DiscountPolicy  // Added later without changing main code
+        METHOD applyDiscount(amount)
+            APPLY buyOneGetOneLogic
+            RETURN updatedAmount
+
+    DEFINE CLASS Item
+        ATTRIBUTE name
+        ATTRIBUTE price
+        ATTRIBUTE taxCalculator: TaxCalculator
+        CONSTRUCTOR(name, price, taxCalculator)
+            SET attributes
+
+    DEFINE CLASS Bill
+        ATTRIBUTE items: List
+        ATTRIBUTE discountPolicy: DiscountPolicy
+        METHOD calculateTotal()
+            sum = 0
+            FOR each item IN items
+                sum += item.price + item.taxCalculator.calculateTax(item.price)
+            sum = discountPolicy.applyDiscount(sum)
+            RETURN sum
+
+    DEFINE MAIN
+        CREATE item1 = Item("Burger", 200, FoodTax)
+        CREATE item2 = Item("Cola", 100, BeverageTax)
+        CREATE item3 = Item("Imported Cheese", 500, ImportedTax)
+
+        CREATE bill AS Bill
+        ADD item1, item2, item3 TO bill.items
+
+        SET bill.discountPolicy = PercentageDiscount
+        PRINT bill.calculateTotal()
+
+        SET bill.discountPolicy = BuyOneGetOne  // Can switch at runtime
+        PRINT bill.calculateTotal()
+END

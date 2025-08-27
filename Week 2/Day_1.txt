@@ -1,0 +1,118 @@
+
+
+1. Online Exam Portal (Basic)
+
+class User {
+    String username;
+    String password;
+
+    boolean login() {
+        return true;
+    }
+}
+
+class Student extends User {
+    boolean enrolled;
+
+    boolean login() {
+        if (super.login() && enrolled) {
+            print("Student login successful. Showing available exams.");
+            return true;
+        }
+        print("Student login failed.");
+        return false;
+    }
+}
+
+class Admin extends User {
+    boolean isAdmin;
+
+    boolean login() {
+        if (super.login() && isAdmin) {
+            print("Admin login successful. Showing exam management tools.");
+            return true;
+        }
+        print("Admin login failed.");
+        return false;
+    }
+}
+
+
+2. Movie Ticket Booking
+
+class Ticket {
+    String movieName;
+    String seatNumber;
+    double price;
+    boolean booked;
+}
+
+class Theatre {
+    List<Ticket> tickets;
+
+    Ticket issueTicket(String movieName, String seatNumber) {
+        for (Ticket t : tickets) {
+            if (t.seatNumber == seatNumber && !t.booked) {
+                t.booked = true;
+                print("Ticket issued for " + movieName + " Seat " + seatNumber);
+                return t;
+            }
+        }
+        print("Seat not available");
+        return null;
+    }
+
+    void cancelTicket(Ticket ticket) {
+        ticket.booked = false;
+        print("Ticket for " + ticket.seatNumber + " cancelled.");
+    }
+}
+
+class Customer {
+    String name;
+
+    Ticket bookTicket(Theatre theatre, String movie, String seat) {
+        return theatre.issueTicket(movie, seat);
+    }
+
+    void cancelTicket(Theatre theatre, Ticket ticket) {
+        theatre.cancelTicket(ticket);
+    }
+}
+
+
+
+class BusStop {
+    String name;
+    BusStop next;
+}
+
+class BusRoute {
+    BusStop head;
+
+    void addStop(String stopName, String afterStop) {
+        BusStop newStop = new BusStop();
+        newStop.name = stopName;
+
+        if (afterStop == null) {
+            newStop.next = head;
+            head = newStop;
+            return;
+        }
+
+        BusStop current = head;
+        while (current != null && !current.name.equals(afterStop)) {
+            current = current.next;
+        }
+
+        if (current != null) {
+            newStop.next = current.next;
+            current.next = newStop;
+        }
+    }
+
+    void removeStop(String stopName) {
+        if (head == null) return;
+
+        if (head.name.equals(stopName)) {
+            head = head.next;
