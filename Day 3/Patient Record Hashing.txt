@@ -1,0 +1,25 @@
+class Patient {
+    int id;
+    String name;
+    String disease;
+}
+
+class PatientManager {
+    HashMap<Integer, Patient> records = new HashMap<>();
+
+    void addPatient(Patient p) {
+        records.put(p.id, p);
+    }
+
+    Patient getPatient(int id) {
+        return records.get(id);
+    }
+
+    void updatePatient(int id, Patient newPatient) {
+        records.put(id, newPatient);
+    }
+
+    void deletePatient(int id) {
+        records.remove(id);
+    }
+}

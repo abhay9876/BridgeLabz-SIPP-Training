@@ -1,0 +1,15 @@
+class Transaction<T> {
+    T paymentMethod;
+
+    Transaction(T method) {
+        this.paymentMethod = method;
+    }
+
+    void process() {
+        print("Processing payment via " + paymentMethod.toString());
+    }
+}
+
+Transaction<String> upi = new Transaction<>("UPI");
+Transaction<String> card = new Transaction<>("Card");
+Transaction<String> netBanking = new Transaction<>("NetBanking");

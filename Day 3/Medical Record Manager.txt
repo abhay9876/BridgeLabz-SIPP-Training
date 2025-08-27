@@ -1,0 +1,25 @@
+interface Searchable {
+    void search(String query);
+}
+
+interface Printable {
+    void print();
+}
+
+class PatientReport implements Searchable, Printable {
+    void search(String query) {
+        print("Searching patient report for " + query);
+    }
+    void print() {
+        print("Printing patient report...");
+    }
+}
+
+class DoctorReport implements Searchable, Printable {
+    void search(String query) {
+        print("Searching doctor report for " + query);
+    }
+    void print() {
+        print("Printing doctor report...");
+    }
+}

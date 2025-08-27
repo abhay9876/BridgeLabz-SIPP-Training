@@ -1,0 +1,11 @@
+class Book {
+    String title;
+    int year;
+    double rating;
+}
+
+List<Book> filterBooks(List<Book> books) {
+    return books.stream()
+                .filter(b -> b.year > 2015 && b.rating > 4.5)
+                .collect(Collectors.toList());
+}

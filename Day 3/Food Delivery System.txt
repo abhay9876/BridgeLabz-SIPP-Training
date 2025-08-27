@@ -1,0 +1,25 @@
+class Customer {
+    String name;
+    String address;
+}
+
+class Restaurant {
+    String name;
+    String location;
+}
+
+class DeliveryBoy {
+    String name;
+    String phone;
+}
+
+class Order {
+    Customer customer;       // Composition
+    Restaurant restaurant;   // Composition
+    DeliveryBoy deliveryBoy; // Composition
+    String foodItem;
+
+    void placeOrder() {
+        print("Order placed by " + customer.name + " from " + restaurant.name);
+    }
+}
