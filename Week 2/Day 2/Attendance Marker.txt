@@ -1,0 +1,49 @@
+class Attendance {
+    int[][] records;
+
+    method markAttendance(int student, int day, int status) {
+        records[student][day] = status;
+    }
+
+    method dailySummary(int day) {
+        count = 0;
+        for (i = 0; i < records.length; i++) {
+            if (records[i][day] == 1) {
+                count++;
+            }
+        }
+        print("Present on Day " + (day+1) + ": " + count);
+    }
+
+    method monthlySummary(int student) {
+        total = 0;
+        for (j = 0; j < records[student].length; j++) {
+            if (records[student][j] == 1) {
+                total++;
+            }
+        }
+        print("Student " + (student+1) + " attended " + total + " days.");
+        return total;
+    }
+
+    method defaulterList() {
+        for (i = 0; i < records.length; i++) {
+            daysPresent = monthlySummary(i);
+            if (daysPresent < (0.75 * records[i].length)) {
+                print("Defaulter: Student " + (i+1));
+            }
+        }
+    }
+}
+
+main() {
+    Attendance a = new Attendance();
+    a.records = new int[30][30];
+
+    a.markAttendance(0, 0, 1);
+    a.markAttendance(2, 0, 0);
+
+    a.dailySummary(9);
+    a.monthlySummary(4);
+    a.defaulterList();
+}

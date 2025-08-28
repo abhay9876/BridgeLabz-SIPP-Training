@@ -1,0 +1,73 @@
+class Node {
+    String stopName;
+    Node next;
+}
+
+class BusRoute {
+    Node head;
+
+    method insertAfter(String existingStop, String newStop) {
+        temp = head;
+        while (temp != null) {
+            if (temp.stopName == existingStop) {
+                Node newNode = new Node();
+                newNode.stopName = newStop;
+                newNode.next = temp.next;
+                temp.next = newNode;
+                break;
+            }
+            temp = temp.next;
+        }
+    }
+
+    method deleteStop(String stopName) {
+        if (head == null) return;
+        if (head.stopName == stopName) {
+            head = head.next;
+            return;
+        }
+        temp = head;
+        while (temp.next != null) {
+            if (temp.next.stopName == stopName) {
+                temp.next = temp.next.next;
+                break;
+            }
+            temp = temp.next;
+        }
+    }
+
+    method searchStop(String stopName) {
+        temp = head;
+        while (temp != null) {
+            if (temp.stopName == stopName) {
+                print("Stop found: " + stopName);
+                return true;
+            }
+            temp = temp.next;
+        }
+        print("Stop not found: " + stopName);
+        return false;
+    }
+
+    method displayRoute() {
+        temp = head;
+        while (temp != null) {
+            print(temp.stopName + " → ");
+            temp = temp.next;
+        }
+    }
+}
+
+main() {
+    BusRoute route = new BusRoute();
+    route.head = new Node("Depot");
+    route.head.next = new Node("Main Street");
+    route.head.next.next = new Node("City Mall");
+    route.head.next.next.next = new Node("Hospital");
+    route.head.next.next.next.next = new Node("Airport");
+
+    route.insertAfter("City Mall", "University");
+    route.deleteStop("Hospital");
+    route.searchStop("Airport");
+    route.displayRoute();
+}

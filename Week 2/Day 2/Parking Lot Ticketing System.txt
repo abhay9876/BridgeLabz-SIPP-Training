@@ -1,0 +1,59 @@
+class Vehicle {
+    String vehicleNumber;
+    Time entryTime;
+
+    method calculateFee(Time exitTime) {
+        return 0;
+    }
+}
+
+class Car extends Vehicle {
+    override method calculateFee(Time exitTime) {
+        hours = differenceInHours(exitTime, entryTime);
+        fee = 50;
+        if (hours > 1) {
+            fee += (hours - 1) * 30;
+        }
+        return fee;
+    }
+}
+
+class Bike extends Vehicle {
+    override method calculateFee(Time exitTime) {
+        hours = differenceInHours(exitTime, entryTime);
+        fee = 20;
+        if (hours > 1) {
+            fee += (hours - 1) * 10;
+        }
+        return fee;
+    }
+}
+
+class Truck extends Vehicle {
+    override method calculateFee(Time exitTime) {
+        hours = differenceInHours(exitTime, entryTime);
+        fee = 100;
+        if (hours > 1) {
+            fee += (hours - 1) * 50;
+        }
+        return fee;
+    }
+}
+
+main() {
+    Car c1 = new Car();
+    c1.vehicleNumber = "KA05AB1234";
+    c1.entryTime = 10:00;
+
+    Bike b1 = new Bike();
+    b1.vehicleNumber = "KA05XY7890";
+    b1.entryTime = 11:15;
+
+    Truck t1 = new Truck();
+    t1.vehicleNumber = "KA09TR5566";
+    t1.entryTime = 09:30;
+
+    print("Car Fee: ₹" + c1.calculateFee(13:30));
+    print("Bike Fee: ₹" + b1.calculateFee(12:00));
+    print("Truck Fee: ₹" + t1.calculateFee(14:00));
+}

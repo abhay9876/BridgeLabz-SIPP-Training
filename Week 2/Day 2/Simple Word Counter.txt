@@ -1,0 +1,32 @@
+class WordCounter {
+    method countWords(String text) {
+        words = text.split(" ");
+        Map<String, Integer> wordCount = new HashMap<>();
+
+        for (word in words) {
+            word = normalize(word);
+            if (wordCount.containsKey(word)) {
+                wordCount.put(word, wordCount.get(word) + 1);
+            } else {
+                wordCount.put(word, 1);
+            }
+        }
+
+        print(wordCount);
+
+        mostFrequent = wordCount.entrySet().stream()
+                        .max(Map.Entry.comparingByValue());
+
+        leastFrequent = wordCount.entrySet().stream()
+                         .min(Map.Entry.comparingByValue());
+
+        print("Most frequent word: " + mostFrequent);
+        print("Least frequent word: " + leastFrequent);
+    }
+}
+
+main() {
+    text = "Sports bring people together. Sports inspire teamwork. Sports create leaders.";
+    WordCounter wc = new WordCounter();
+    wc.countWords(text);
+}

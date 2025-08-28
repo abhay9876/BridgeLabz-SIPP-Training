@@ -1,0 +1,52 @@
+class SurveyResponse {
+    String restaurantName;
+    int rating;
+
+    constructor(restaurantName, rating) {
+        this.restaurantName = restaurantName;
+        this.rating = rating;
+    }
+
+    method getRestaurantName() {
+        return restaurantName;
+    }
+
+    method getRating() {
+        return rating;
+    }
+}
+
+class SurveyReport {
+    method generateReport(List<SurveyResponse> responses) {
+        Map<String, Double> avgRatings = responses.stream()
+            .collect(groupingBy(
+                SurveyResponse::getRestaurantName,
+                averagingInt(SurveyResponse::getRating)
+            ));
+
+        print(avgRatings);
+
+        highest = avgRatings.entrySet().stream()
+                   .max(Map.Entry.comparingByValue());
+
+        lowest = avgRatings.entrySet().stream()
+                  .min(Map.Entry.comparingByValue());
+
+        print("Highest rated: " + highest);
+        print("Needs improvement: " + lowest);
+    }
+}
+
+main() {
+    responses = new ArrayList<>();
+    responses.add(new SurveyResponse("PizzaHut", 4));
+    responses.add(new SurveyResponse("PizzaHut", 5));
+    responses.add(new SurveyResponse("KFC", 3));
+    responses.add(new SurveyResponse("KFC", 4));
+    responses.add(new SurveyResponse("Subway", 5));
+    responses.add(new SurveyResponse("Subway", 4));
+    responses.add(new SurveyResponse("Subway", 5));
+
+    SurveyReport report = new SurveyReport();
+    report.generateReport(responses);
+}

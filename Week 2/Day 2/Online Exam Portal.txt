@@ -1,0 +1,50 @@
+class User {
+    String username;
+    String password;
+
+    method login() {
+        print("Validating user...");
+    }
+}
+
+class Student extends User {
+    Boolean isRegistered;
+    Boolean isEnrolled;
+
+    override method login() {
+        if (isRegistered == true AND isEnrolled == true) {
+            print("Student " + username + " logged in successfully.");
+            print("Showing available exams...");
+        } else {
+            print("Login failed! Student not registered/enrolled.");
+        }
+    }
+}
+
+class Admin extends User {
+    Boolean hasAdminPrivileges;
+
+    override method login() {
+        if (hasAdminPrivileges == true) {
+            print("Admin " + username + " logged in successfully.");
+            print("Accessing exam management tools...");
+        } else {
+            print("Login failed! Invalid admin credentials.");
+        }
+    }
+}
+
+main() {
+    Student s1 = new Student();
+    s1.username = "john123";
+    s1.password = "12345";
+    s1.isRegistered = true;
+    s1.isEnrolled = true;
+    s1.login();
+
+    Admin a1 = new Admin();
+    a1.username = "admin01";
+    a1.password = "adminpass";
+    a1.hasAdminPrivileges = true;
+    a1.login();
+}
